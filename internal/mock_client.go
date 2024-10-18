@@ -29,7 +29,6 @@ import (
 	"github.com/golang/mock/gomock"
 
 	"github.com/apache/rocketmq-client-go/v2/internal/remote"
-	"github.com/apache/rocketmq-client-go/v2/internal/utils"
 	"github.com/apache/rocketmq-client-go/v2/primitive"
 )
 
