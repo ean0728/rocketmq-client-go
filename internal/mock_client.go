@@ -29,6 +29,7 @@ import (
 	"github.com/golang/mock/gomock"
 
 	"github.com/apache/rocketmq-client-go/v2/internal/remote"
+	"github.com/apache/rocketmq-client-go/v2/internal/utils"
 	"github.com/apache/rocketmq-client-go/v2/primitive"
 )
 
@@ -292,6 +293,7 @@ func (mr *MockRMQClientMockRecorder) UnregisterProducer(group interface{}) *gomo
 
 // InvokeSync mocks base method
 func (m *MockRMQClient) InvokeSync(ctx context.Context, addr string, request *remote.RemotingCommand, timeoutMillis time.Duration) (*remote.RemotingCommand, error) {
+	addr = utils.MockAddrValid(addr)
 	ret := m.ctrl.Call(m, "InvokeSync", ctx, addr, request, timeoutMillis)
 	ret0, _ := ret[0].(*remote.RemotingCommand)
 	ret1, _ := ret[1].(error)
