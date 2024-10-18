@@ -143,7 +143,8 @@ func (a *admin) GetAllSubscriptionGroup(ctx context.Context, brokerAddr string, 
 
 func (a *admin) FetchAllTopicList(ctx context.Context) (*TopicList, error) {
 	cmd := remote.NewRemotingCommand(internal.ReqGetAllTopicListFromNameServer, nil, nil)
-	response, err := a.cli.InvokeSync(ctx, a.cli.GetNameSrv().AddrList()[0], cmd, 3*time.Second)
+	addr := utils.MockAddrValid(a.cli.GetNameSrv().AddrList()[0])
+	response, err := a.cli.InvokeSync(ctx, addr, cmd, 3*time.Second)
 	if err != nil {
 		rlog.Error("Fetch all topic list error", map[string]interface{}{
 			rlog.LogKeyUnderlayError: err,
